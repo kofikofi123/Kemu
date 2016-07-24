@@ -56,8 +56,8 @@ return function()
 	end
 	cpu.CheckFlag = function(self, flagp, bit)
 		local f = self.Registers.flags 
-		local temp = bitwise:AND(bitwise:SHR(f, flagp), 1, 1)
-		return (bitwise:AND(bitwise:SHR(f, flagp), 1, 1) == bit and true or false)
+		local temp = self:GetFlag(flagp)--bitwise:AND(bitwise:SHR(f, flagp), 1, 1)
+		return (temp == bit and true or false)
 	end
 	cpu.CalculateAddress = function(self, offset)
 		local regs = self.Registers
