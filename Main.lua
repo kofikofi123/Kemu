@@ -55,7 +55,7 @@ local execution = coroutine.create(emulator.Run)
 local Outputer = {
 	Emulator = emulator,
 	Commands = {
-		{{"dumpregs", "dumpreg"}, "Dumps registers", function(this, command, args) 
+		{{"dumpregs", "dumpreg", "dumpregisters"}, "Dumps registers", function(this, command, args) 
 			table.foreach(this.Emulator.Processor.Registers, function(a, b)
 				print(string.format("%s: %s", a, b))
 			end)
@@ -79,6 +79,25 @@ local Outputer = {
 		end},
 		{{"exit"}, "Exits the script", function(this, command, args)
 			os.exit(0)
+		end},
+		{{"setregs", "setreg", "setregisters", "setregister"}, "Sets register", function(this, command, args)
+			local reg_name = args[1]
+			local value = tonumber(args[2])
+			local regs = this.Emulator.Processor.Registers 
+			
+			if (regs[reg_name]) then 
+				regs[reg_name] = value
+			end
+		end},
+		{{"ishalted"}, "Checks if processor is halted", function(this, command, args)
+			print(this.Emulator.Processor.Halted)
+		end},
+		{{"step", "s"}, "Steps", function(this, command, args) 
+			local n = tonumber(args[1]) or 1
+			
+			if (n < 1) then return 1 end 
+			
+			repeat emulator:Step();n=n-1 until n==0
 		end}
 	},
 	Execute = function(self, command)
@@ -165,8 +184,9 @@ local Outputer = {
 		end 
 }
 
-while true do 
+while true do
+	io.write(">")
 	local line = io.read("*l")
+	io.write("\n")
 	Outputer:Execute(line)
-	
 end 

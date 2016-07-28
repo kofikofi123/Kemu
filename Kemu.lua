@@ -38,7 +38,7 @@ return function(cpu)
 		local cpu = self.Processor
 		continue = true
 		while true do
-			if (not cpu.Halted and continue) then 
+			if (continue) then 
 				self:Step()
 			else 
 				break
