@@ -4,7 +4,7 @@ local helper = require("GHelper")
 return function(cpu)
 	local asd = {}
 	local continue = true
-	
+	local warn = (warn or print)
 	
 	asd.Processor = (cpu or require("CPU")())
 			
@@ -39,9 +39,10 @@ return function(cpu)
 		continue = true
 		while true do
 			if (not cpu.Halted and continue) then 
-				self:Step()				
+				self:Step()
+			else 
+				break
 			end
-			wait()
 		end
 	end
 	
@@ -73,7 +74,6 @@ return function(cpu)
 			end
 			
 			prefixes[#prefixes + 1] = temp
-			wait() -- for now
 		end		
 		return prefixes
 	end
@@ -110,7 +110,6 @@ return function(cpu)
 		end
 		
 		local regs = self.Processor.Registers
-		warn(helper.ToHex(where, 4))
 		regs.cs = cs 
 		regs.ip = ip 
 	end

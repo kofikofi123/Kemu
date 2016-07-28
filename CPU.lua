@@ -1,4 +1,5 @@
 return function()
+	local warn = (warn or print)
 	local cpu = {}
 	
 	--helper vars 
@@ -298,7 +299,6 @@ return function()
 				
 				local cs = self:GetWord()
 				
-				warn(offseti, cs)
 				regs.cs = cs 
 				regs.ip = bitwise:AND(offseti, (2^oper_size)-1, oper_size)
 			end
@@ -717,6 +717,18 @@ return function()
 								
 			end
 		end
+		cpu.Inc = function(self, prefix, instruction)
+			if (helper.InRange(instruction, 0x40, 0x47)) then 
+				local pref = 16
+				if (helper.SearchPrefix(prefix, 0x66)) then 
+					pref = 32  
+				end 
+				
+				local reg, regsh = self:DecodeReg(bitwise:AND(instruction, 0x0F, 4), pref) 
+				
+				self:SetRegister(reg, self:GetRegister(reg, pref, regsh) + 1, pref, regsh)
+			end 
+		end 
 		--Junktions --This for instructions that have the same opcodes, because I do not specify the extended bits within them 
 		cpu.JunktionFF = function(self, prefix, instruction)
 			local x = self.GetExtendedBits(self:Get(1))
@@ -764,7 +776,9 @@ return function()
 		ins[0x1E] = cpu.Push 
 		
 		
-		
+		for x = 0x40, 0x47, 1 do 
+			ins[x] = cpu.Inc
+		end 
 		for x = 0x50, 0x57, 1 do 
 			ins[x] = cpu.Push
 		end
