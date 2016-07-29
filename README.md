@@ -40,3 +40,8 @@ Opcode /number - This opcode + the extended bits (/number) determine the instruc
 
 Intel manual:
 	http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
+	
+------------------------------------------------------------------------------------------------------------
+#Extra (7/29/16) 12:16 AM 
+
+I made this so I can get a feel of the instructions, I did not make it to emulate the whole x86 architech.
