@@ -25,23 +25,23 @@ Not tested instructions:<br />
 Instructions in processes:<br />
 	ADD<br />
 	JCC<br />
-	
-	
-	
-	
-	
-	
-* 	- Not all opcodes was tested for this instruction
-** 	- There are more opcodes to come for this instruction
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+* 	- Not all opcodes was tested for this instruction<br />
+** 	- There are more opcodes to come for this instruction<br />
 *** - Although this instruction is tested or not, I am not sure if this is correct. <br />
-------------------------------------------LEGEND------------------------------------------
+------------------------------------------LEGEND------------------------------------------<br />
 Opcode /number - This opcode + the extended bits (/number) determine the instruction<br />
 <br />
 <br />
-Intel manual:
-	http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
+Intel manual:<br />
+	http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html<br />
 <br />
-------------------------------------------------------------------------------------------------------------
-#Extra (7/29/16) 12:16 AM 
+------------------------------------------------------------------------------------------------------------<br />
+#Extra (7/29/16) 12:16 AM<br />
 
 I made this so I can get a feel of the instructions, I did not make it to emulate the whole x86 architech.
