@@ -33,14 +33,14 @@ Instructions in processes:<br />
 	
 * 	- Not all opcodes was tested for this instruction
 ** 	- There are more opcodes to come for this instruction
-*** - Although this instruction is tested or not, I am not sure if this is correct. 
+*** - Although this instruction is tested or not, I am not sure if this is correct. <br />
 ------------------------------------------LEGEND------------------------------------------
-Opcode /number - This opcode + the extended bits (/number) determine the instruction 
-
-
+Opcode /number - This opcode + the extended bits (/number) determine the instruction<br />
+<br />
+<br />
 Intel manual:
 	http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html
-	
+<br />
 ------------------------------------------------------------------------------------------------------------
 #Extra (7/29/16) 12:16 AM 
 
